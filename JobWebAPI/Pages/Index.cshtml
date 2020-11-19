@@ -1,0 +1,77 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<div class="mb-3">
+    <button class="btn btn-success" data-toggle="modal" data-target="#jobForm">Post Jobs</button>
+</div>
+
+<div class="row" id="jobData">
+    <div class="col-md-12">
+        <h1 class="text-center">There is No Job Posted</h1>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="jobForm">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Job Form</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="job_title">Job Title: </label>
+                        <input type="text" class="form-control" id="job_title" />
+                        <input type="hidden" class="form-control" id="jobid">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company Name: </label>
+                        <input type="text" class="form-control" id="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="package">Package Details: </label>
+                        <input type="text" class="form-control" id="package">
+                    </div>
+                    <div class="form-group">
+                        <label for="last_date">Last Date For Apply: </label>
+                        <input type="date" class="form-control" id="last_date" />
+                    </div>
+                    <button type="button" id="btn" onclick="saveDetails()" class="btn btn-success btn-block">Save Job Details</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="messageDialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Message From Application</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="message"></p>
+            </div>      
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            loadJobs();
+        });
+    </script>
+}
